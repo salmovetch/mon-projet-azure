@@ -1,0 +1,28 @@
+name: 01 - Test Simple
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Afficher un message
+        run: echo "GitHub Actions fonctionne!"
+      
+      - name: Afficher la date
+        run: date
+      
+      - name: Lister les fichiers
+        run: ls -la
+      
+      - name: Vérifier que index.html existe
+        run: |
+          if [ -f "index.html" ]; then
+            echo "index.html trouvé!"
+          else
+            echo "index.html manquant!"
+            exit 1
+          fi
